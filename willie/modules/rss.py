@@ -36,7 +36,8 @@ def setup(bot):
     # The rss_feeds table was added on 2013-07-17.
     try:
         c.execute('SELECT * FROM rss_feeds')
-    except StandardError:
+    # TODO: Fix this inspection warning.
+    except Exception:
         create_table(bot, c)
         conn.commit()
     conn.close()
